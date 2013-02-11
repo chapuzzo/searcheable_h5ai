@@ -7,6 +7,7 @@
 // @include "lib/jquery.mousewheel-*.js"
 // @include "lib/jquery.scrollpanel-*.js"
 // @include "lib/jquery.spin-*.js"
+// @include "lib/jquery-ui-*.js
 
 // other libs
 // ----------
@@ -20,36 +21,36 @@
 // app
 // ---
 (function () {
-	'use strict';
+    'use strict';
 
-	/*global jQuery, Modernizr, moment, _ */
-	modulejs.define('$', function () { return jQuery; });
-	modulejs.define('modernizr', function () { return Modernizr; });
-	modulejs.define('moment', function () { return moment; });
-	modulejs.define('_', function () { return _; });
+    /*global jQuery, Modernizr, moment, _ */
+    modulejs.define('$', function () { return jQuery; });
+    modulejs.define('modernizr', function () { return Modernizr; });
+    modulejs.define('moment', function () { return moment; });
+    modulejs.define('_', function () { return _; });
 
-	// @include "inc/**/*.js"
+    // @include "inc/**/*.js"
 
-	var	$ = jQuery,
-		mode = $('script[src$="scripts.js"]').data('mode');
+    var $ = jQuery,
+        mode = $('script[src$="scripts.js"]').data('mode');
 
-	if (mode === 'info') {
+    if (mode === 'info') {
 
-		$(function () { modulejs.require('info'); });
+        $(function () { modulejs.require('info'); });
 
-	} else {
+    } else {
 
-		$.ajax({
-			url: '.',
-			data: {action: 'get', options: true, types: true, langs: true, server: true},
-			type: 'POST',
-			dataType: 'json',
-			success: function (config) {
+        $.ajax({
+            url: '.',
+            data: {action: 'get', options: true, types: true, langs: true, server: true},
+            type: 'POST',
+            dataType: 'json',
+            success: function (config) {
 
-				modulejs.define('config', config);
-				$(function () { modulejs.require('main'); });
-			}
-		});
-	}
+                modulejs.define('config', config);
+                $(function () { modulejs.require('main'); });
+            }
+        });
+    }
 
 }());
