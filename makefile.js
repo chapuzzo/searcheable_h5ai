@@ -110,6 +110,12 @@ module.exports = function (make) {
 			.cssmin()
 			.write($.OVERWRITE, mapSrc);
 
+		$(src +  ': _h5ai/client/css/*.css')
+			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
+			.less()
+			.cssmin()
+			.write($.OVERWRITE, mapSrc);
+
 		$(src + ': **/*.jade')
 			.modified(mapSrc)
 			.handlebars(handlebarsEnv)
