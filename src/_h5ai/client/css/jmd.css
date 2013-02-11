@@ -21,21 +21,21 @@
     display:block;
     width: 273px;
     height: 132px;
-    background: url("http://juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% 0px transparent;
+    background: url("http://www.juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% 0px transparent;
     margin-left: auto;
     margin-right: 0px;
     margin-top: 65px;
 }
 
 
-#jlogo:hover{background: url("http://juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% -132px transparent;}
-body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0 #FFFFFF;}
+#jlogo:hover{background: url("http://www.juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% -132px transparent;}
+body {background: url("http://www.juniorsmd.org/images/fondo.png") repeat scroll 0 0 #FFFFFF;}
 #extended,.redonet {margin:0; border-radius: 15px; border-width: 3px ; border-color: rgb(51,140,38) ; border-style: solid; background: white; padding: 15px;}
 #nombre {position: relative; height: 30px ;top: -50px;font-family: "Joyful Juliana"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 15px;}
 #separador { z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); margin: 0; padding: 0; border-radius: 15px 15px 0 0; height: 60px; width:100%; display:block}
 
 #cabecera {
-    background: url('http://juniorsmd.org/images/cabeceras/imagencabecera_13.png') 0px 0% no-repeat;
+    background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_13.png') 0px 0% no-repeat;
     /*background: white;*/
     /*border: green dashed 1px;*/
     width: 950px;
@@ -58,39 +58,39 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #es_nuestraidentidad a {
-    background: url("http://juniorsmd.org/images/es_BotonNuestraIdentidad.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonNuestraIdentidad.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 96px;
     width: 96px;
 }
 #es_nuestraidentidad a:hover {
-    background: url("http://juniorsmd.org/images/es_BotonNuestraIdentidad.png") no-repeat scroll 50% -96px transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonNuestraIdentidad.png") no-repeat scroll 50% -96px transparent;
 }
 #ca_nuestraidentidad {
     padding: 0;
     position: absolute;
 }
 #ca_nuestraidentidad a {
-    background: url("http://juniorsmd.org/images/ca_BotonNuestraIdentidad.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonNuestraIdentidad.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 95px;
     width: 95px;
 }
 #ca_nuestraidentidad a:hover {
-    background: url("http://juniorsmd.org/images/ca_BotonNuestraIdentidad.png") no-repeat scroll 50% -95px transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonNuestraIdentidad.png") no-repeat scroll 50% -95px transparent;
 }
 #es_quehacemos {
     margin: 0 0 0 102px;
     position: absolute;
 }
 #es_quehacemos a {
-    background: url("http://juniorsmd.org/images/es_BotonQueHacemos.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonQueHacemos.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 84px;
     width: 84px;
 }
 #es_quehacemos a:hover {
-    background: url("http://juniorsmd.org/images/es_BotonQueHacemos.png") no-repeat scroll 50% -84px transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonQueHacemos.png") no-repeat scroll 50% -84px transparent;
     display: block;
     height: 84px;
     width: 84px;
@@ -100,13 +100,13 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #ca_quehacemos a {
-    background: url("http://juniorsmd.org/images/ca_BotonQueHacemos.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonQueHacemos.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 84px;
     width: 84px;
 }
 #ca_quehacemos a:hover {
-    background: url("http://juniorsmd.org/images/ca_BotonQueHacemos.png") no-repeat scroll 50% -84px transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonQueHacemos.png") no-repeat scroll 50% -84px transparent;
     display: block;
     height: 84px;
     width: 84px;
@@ -116,13 +116,13 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #es_nuestrahistoria a {
-    background: url("http://juniorsmd.org/images/es_BotonNuestraHistoria.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonNuestraHistoria.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 87px;
     width: 87px;
 }
 #es_nuestrahistoria a:hover {
-    background: url("http://juniorsmd.org/images/es_BotonNuestraHistoria.png") no-repeat scroll 50% -87px transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonNuestraHistoria.png") no-repeat scroll 50% -87px transparent;
     display: block;
     height: 87px;
     width: 87px;
@@ -132,13 +132,13 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #ca_nuestrahistoria a {
-    background: url("http://juniorsmd.org/images/ca_BotonNuestraHistoria.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonNuestraHistoria.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 87px;
     width: 87px;
 }
 #ca_nuestrahistoria a:hover {
-    background: url("http://juniorsmd.org/images/ca_BotonNuestraHistoria.png") no-repeat scroll 50% -87px transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonNuestraHistoria.png") no-repeat scroll 50% -87px transparent;
     display: block;
     height: 87px;
     width: 87px;
@@ -148,13 +148,13 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #es_dondeestamos a {
-    background: url("http://juniorsmd.org/images/es_BotonDondeEstamos.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonDondeEstamos.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 77px;
     width: 77px;
 }
 #es_dondeestamos a:hover {
-    background: url("http://juniorsmd.org/images/es_BotonDondeEstamos.png") no-repeat scroll 50% -77px transparent;
+    background: url("http://www.juniorsmd.org/images/es_BotonDondeEstamos.png") no-repeat scroll 50% -77px transparent;
     display: block;
     height: 77px;
     width: 77px;
@@ -164,13 +164,13 @@ body {background: url("http://juniorsmd.org/images/fondo.png") repeat scroll 0 0
     position: absolute;
 }
 #ca_dondeestamos a {
-    background: url("http://juniorsmd.org/images/ca_BotonDondeEstamos.png") no-repeat scroll 50% 0 transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonDondeEstamos.png") no-repeat scroll 50% 0 transparent;
     display: block;
     height: 77px;
     width: 77px;
 }
 #ca_dondeestamos a:hover {
-    background: url("http://juniorsmd.org/images/ca_BotonDondeEstamos.png") no-repeat scroll 50% -77px transparent;
+    background: url("http://www.juniorsmd.org/images/ca_BotonDondeEstamos.png") no-repeat scroll 50% -77px transparent;
     display: block;
     height: 77px;
     width: 77px;
