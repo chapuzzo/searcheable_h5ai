@@ -95,6 +95,12 @@ module.exports = function (make) {
 			.jshint(jshint);
 	});
 
+	make.target('tl', [], 'ln to a test directory with lots of subdir').sync(function (){
+
+
+
+	});
+
 
 	make.target('build', ['check-version'], 'build all updated files').sync(function () {
 
@@ -118,7 +124,7 @@ module.exports = function (make) {
 		$(src + ': **/*.jade')
 			.modified(mapSrc)
 			.handlebars(handlebarsEnv)
-			.jade()
+			.jade({pretty:true})
 			.write($.OVERWRITE, mapSrc);
 
 		$(src + ': **, ! _h5ai/client/js/**, ! _h5ai/client/css/**, ! **/*.jade')
