@@ -14,7 +14,7 @@ Options
 	*/
 	"spacing": {
 		"maxWidth": 960,
-		"top": 50,
+		"top": 0,
 		"right": "auto",
 		"bottom": 50,
 		"left": "auto"

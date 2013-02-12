@@ -16,7 +16,9 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 						'</a>' +
 					'</li>',
 		hintTemplate = '<span class="hint"/>',
-		contentTemplate = '<div id="content">' +
+		contentTemplate = 
+						'<div id="content">' +
+						'<div id="nombre"><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>' +
 							'<div id="view">' +
 								'<ul id="items" class="clearfix">' +
 									'<li class="header">' +

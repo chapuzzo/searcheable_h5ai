@@ -18,5 +18,5 @@
         <a href="http://www.juniorsmd.org" id="jlogo"></a>
     </div>
 </div>
-<div id="nombre"><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>
-<!--<div id="separador"></div> -->  
+<!--<div id="nombre"><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>
+<div id="separador"></div> -->  

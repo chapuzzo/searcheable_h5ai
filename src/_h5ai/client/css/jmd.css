@@ -31,8 +31,8 @@
 #jlogo:hover{background: url("http://www.juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% -132px transparent;}
 body {background: url("http://www.juniorsmd.org/images/fondo.png") repeat scroll 0 0 #FFFFFF;}
 #extended,.redonet,#content {margin:0; border-radius: 15px; border-width: 3px ; border-color: rgb(51,140,38) ; border-style: solid; background: white; padding: 15px; box-shadow: 0px -20px rgb(143,212,0); }
-#content:before{ content: xXxXxXxX;}
-#nombre {position: relative; height: 30px ;top: -50px;font-family: "Joyful Juliana"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 15px;}
+/*#content:before{ content: 'xXxXxXxX'; top: -40px;}*/
+#nombre {position: relative; height: 0px ;top: -88px;font-family: "Joyful Juliana"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 0px;}
 /*#separador,#content:before { z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); padding: 0; border-radius: 15px 15px 0 0; height: 60px; width:100%; display:block;width: 950px;margin-left: auto;margin-right: auto;}*/
 /*#content:before { content:"xXxXxXxXxXxX"; z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); padding: 15px; border-radius: 15px 15px 0 0; height: 60px;  display:block;width: 950px;margin-left: auto;margin-right: auto;}*/
 
