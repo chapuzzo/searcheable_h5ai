@@ -18,7 +18,7 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 		hintTemplate = '<span class="hint"/>',
 		contentTemplate = 
 						'<div id="content">' +
-						'<div id="nombre"><?php echo "xaxxaxxa";?><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>' +
+						'<div id="nombre">x<?php echo "xaxxaxxa";?>w<img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>' +
 							'<div id="view">' +
 								'<ul id="items" class="clearfix">' +
 									'<li class="header">' +
@@ -119,6 +119,11 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 			} else {
 				$empty.hide();
 			}
+
+			var labels = _.pluck(item.getCrumb(), 'label'),
+				title = labels.join('/');
+				console.log(labels);
+			$('#nombre').html(title.toUpperCase());
 		},
 
 		onLocationRefreshed = function (item, added, removed) {
