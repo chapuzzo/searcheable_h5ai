@@ -39,7 +39,7 @@ if (array_key_exists("action", $_REQUEST)) {
     $HREF = $app->get_app_abs_href();
     $FALLBACK = $app->get_no_js_fallback();
 
-    //normalized_require_once("/server/php/inc/page.php");
+    normalized_require_once("/server/php/inc/page.php");
 }
 
 ?>
