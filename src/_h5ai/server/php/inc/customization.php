@@ -1,6 +1,6 @@
 <div id="jmd">
     <div id="cabecera"
-    style="background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_7.png') 0px 0% no-repeat;">
+    style="background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_<?php echo rand(0,25)?>.png') 0px 0% no-repeat;">
         <div id="categoriasestaticas">
             <div id="ca_nuestraidentidad">
                 <a href="http://www.juniorsmd.org/ca/nuestraidentidad"></a>
@@ -19,4 +19,4 @@
     </div>
 </div>
 <div id="nombre"><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>
-<!--<div id="separador"></div> -->
+<!--<div id="separador"></div> -->  
