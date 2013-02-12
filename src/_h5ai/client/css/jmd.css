@@ -30,9 +30,9 @@
 
 #jlogo:hover{background: url("http://www.juniorsmd.org/images/logojuniors.png") no-repeat scroll 50% -132px transparent;}
 body {background: url("http://www.juniorsmd.org/images/fondo.png") repeat scroll 0 0 #FFFFFF;}
-#extended,.redonet {margin:0; border-radius: 15px; border-width: 3px ; border-color: rgb(51,140,38) ; border-style: solid; background: white; padding: 15px;}
+#extended,.redonet,#content {margin:0; border-radius: 15px; border-width: 3px ; border-color: rgb(51,140,38) ; border-style: solid; background: white; padding: 15px;}
 #nombre {position: relative; height: 30px ;top: -50px;font-family: "Joyful Juliana"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 15px;}
-#separador { z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); margin: 0; padding: 0; border-radius: 15px 15px 0 0; height: 60px; width:100%; display:block}
+#separador,#content:before { z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); margin: 0; padding: 0; border-radius: 15px 15px 0 0; height: 60px; width:100%; display:block}
 
 #cabecera {
     background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_13.png') 0px 0% no-repeat;
