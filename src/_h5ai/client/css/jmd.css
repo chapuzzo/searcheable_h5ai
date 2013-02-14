@@ -3,12 +3,12 @@
     src:    local(JoyfulJulianaProRegular),
      url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.eot');
     src: url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.eot?#iefix') format('embedded-opentype'),
+        url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.woff') format('woff'),
         url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.ttf') format('truetype'),
         url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.svg#JoyfulJulianaProRegular') format('svg');
     font-style: normal;
     font-weight: normal;
 }
-        /*url('http://recursos.juniorsmd.org/fonts/Joyful_Juliana_Pro-webfont.woff') format('woff'),*/
 
 body{
     font-family: "JoyfulJulianaProRegular", Prusia
