@@ -1,8 +1,8 @@
-/*@font-face {
-    font-family: "Joyful Juliana";
-    src: url(http://static.tumblr.com/uo4krnd/oTZm5kar8/joyful_juliana.ttf);
+@font-face {
+    font-family: "JJ";
+    src: url('http://www.juniorsmd.org/images/Joyful_Juliana_Pro.otf');
     font-style: normal;
-};*/
+};
 
 #jmd {
     display: block;
@@ -32,7 +32,7 @@
 body {background: url("http://www.juniorsmd.org/images/fondo.png") repeat scroll 0 0 #FFFFFF;}
 #extended,.redonet,#content {margin:0; border-radius: 15px; border-width: 3px ; border-color: rgb(51,140,38) ; border-style: solid; background: white; padding: 15px; box-shadow: 0px -30px rgb(143,212,0); }
 /*#content:before{ content: 'xXxXxXxX'; top: -40px;}*/
-#nombre {position: relative; height: 0px ;top: -98px;font-family: "Joyful Juliana"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 0px;}
+#nombre {position: relative; height: 0px ;top: -98px;font-family: "JJ"; font-size: 2.5em; color: rgb(143,212,0); font-weight: bold; margin: 0px 0px 0px 0px;}
 /*#separador,#content:before { z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); padding: 0; border-radius: 15px 15px 0 0; height: 60px; width:100%; display:block;width: 950px;margin-left: auto;margin-right: auto;}*/
 /*#content:before { content:"xXxXxXxXxXxX"; z-index: -1; float: left; top: -30px; position:relative;background-color: rgb(143,212,0); padding: 15px; border-radius: 15px 15px 0 0; height: 60px;  display:block;width: 950px;margin-left: auto;margin-right: auto;}*/
 
