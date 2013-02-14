@@ -120,10 +120,12 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 				$empty.hide();
 			}
 
-			var labels = _.pluck(item.getCrumb(), 'label'),
-				title = labels.join('/');
+			var labels = _.pluck(item.getCrumb(), 'label').pop();
+				//title = labels.join('/');
 				console.log(labels);
-			$('#nombre').html(title.toUpperCase());
+				console.log(item.getCrumb());
+
+			$('#nombre').html(labels.toUpperCase());
 		},
 
 		onLocationRefreshed = function (item, added, removed) {

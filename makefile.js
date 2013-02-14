@@ -53,7 +53,7 @@ module.exports = function (make) {
 		$ = make.fQuery,
 		moment = make.moment;
 
-
+	
 	make.version('>=0.8.1');
 	make.defaults('build');
 
@@ -95,9 +95,19 @@ module.exports = function (make) {
 			.jshint(jshint);
 	});
 
-	make.target('tl', [], 'ln to a test directory with lots of subdir').sync(function (){
+	make.target('tl', ['clean', 'build'], 'ln to a test directory with lots of subdir').sync(function (){
 
+		var cp = require('child_process');
+			
 
+		cp.exec('ln -sf /home/luis/sandbox/jsonizer/prova '+build+'/prova', function (error, stdout, stderr) {
+		  console.log(stdout);
+		  console.log(stderr);
+
+		  if (error !== null) {
+		    console.log('exec error: ' + error);
+		  }
+		});
 
 	});
 
