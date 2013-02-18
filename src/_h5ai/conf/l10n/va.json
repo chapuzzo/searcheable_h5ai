@@ -1,0 +1,18 @@
+{
+	"lang": "valencià",
+	"details": "Detalls",
+	"icons": "Icones",
+	"name": "Nom",
+	"lastModified": "Última modificació",
+	"size": "Tamany",
+	"parentDirectory": "Directori superior",
+	"empty": "buit",
+	"folders": "Directoris",
+	"files": "Arxius",
+	"download": "Descarregar",
+	"list": "Llista",
+	"delete": "Borrar",
+	"grid": "Graella",
+	"filter": "filtre",
+	"search": "cerca"
+}

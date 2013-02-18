@@ -1,7 +1,7 @@
 {
 	"lang": "español",
 	"details": "Detalles",
-	"icons": "Íconos",
+	"icons": "Iconos",
 	"name": "Nombre",
 	"lastModified": "Última modificación",
 	"size": "Tamaño",
@@ -9,5 +9,10 @@
 	"empty": "vacío",
 	"folders": "Directorios",
 	"files": "Archivos",
-	"download": "Descargar"
+	"download": "Descargar",
+	"list": "Lista",
+	"delete": "Borrar",
+	"grid": "Rejilla",
+	"filter": "filtro",
+	"search": "búsqueda"
 }

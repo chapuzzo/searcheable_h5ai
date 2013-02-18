@@ -1,19 +1,19 @@
 
-modulejs.define('ext/filter', ['_', '$', 'core/settings', 'core/resource'], function (_, $, allsettings, resource) {
+modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource'], function (_, $, allsettings, resource) {
 
 	var settings = _.extend({
 			enabled: false
-		}, allsettings.filter),
+		}, allsettings.search),
 
-		template = '<li id="filter">' +
+		template = '<li id="search">' +
 						'<span class="element">' +
-							'<img src="' + resource.image('filter') + '" alt="filter"/>' +
-							'<input type="text" value="" placeholder="filter"/>' +
+							'<img src="' + resource.image('search') + '" alt="search"/>' +
+							'<input type="text" value="" placeholder="search"/>' +
 						'</span>' +
 					'</li>',
 		noMatchTemplate = '<div class="no-match l10n-noMatch"/>',
 
-		$filter, $input, $noMatch,
+		$search, $input, $noMatch,
 
 		filter = function (re) {
 
@@ -72,11 +72,11 @@ modulejs.define('ext/filter', ['_', '$', 'core/settings', 'core/resource'], func
 			var val = $input.val();
 
 			if (val) {
-				filter(parseFilterSequence(val));
-				$filter.addClass('current');
+				//filter(parseFilterSequence(val));
+				$search.addClass('current');
 			} else {
-				filter();
-				$filter.removeClass('current');
+				//filter();
+				$search.removeClass('current');
 			}
 		},
 
@@ -86,11 +86,11 @@ modulejs.define('ext/filter', ['_', '$', 'core/settings', 'core/resource'], func
 				return;
 			}
 
-			$filter = $(template).appendTo('#navbar');
-			$input = $filter.find('input');
+			$search = $(template).appendTo('#navbar');
+			$input = $search.find('input');
 			$noMatch = $(noMatchTemplate).appendTo('#view');
 
-			$filter
+			$search
 				.on('click', function () {
 
 					$input.focus();
@@ -99,7 +99,7 @@ modulejs.define('ext/filter', ['_', '$', 'core/settings', 'core/resource'], func
 			$input
 				.on('focus', function () {
 
-					$filter.addClass('current');
+					$search.addClass('current');
 				})
 				.on('blur keyup', update);
 

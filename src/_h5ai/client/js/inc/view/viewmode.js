@@ -58,7 +58,7 @@ modulejs.define('view/viewmode', ['_', '$', 'core/settings', 'core/resource', 'c
 							.appendTo($navbar)
 							.on('click', 'a', function (event) {
 								update(mode);
-								event.preventDefault();
+								//event.preventDefault();
 							});
 					}
 				});

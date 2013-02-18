@@ -25,7 +25,8 @@ modulejs.define('ext/l10n', ['_', '$', 'core/settings', 'core/langs', 'core/form
 			noMatch: 'no match',
 			dateFormat: 'YYYY-MM-DD HH:mm',
 			filter: 'filter',
-			'delete': 'delete'
+			"delete": 'delete',
+			search: 'search'
 		},
 
 		template = '<span id="langSelector">' +
@@ -63,6 +64,7 @@ modulejs.define('ext/l10n', ['_', '$', 'core/settings', 'core/langs', 'core/form
 			});
 
 			$('#filter input').attr('placeholder', currentLang.filter);
+			$('#search input').attr('placeholder', currentLang.search);
 		},
 
 		loadLanguage = function (isoCode, callback) {

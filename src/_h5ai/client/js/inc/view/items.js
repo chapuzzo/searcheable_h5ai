@@ -16,9 +16,12 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 						'</a>' +
 					'</li>',
 		hintTemplate = '<span class="hint"/>',
+		fallbackImg = 'http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png',
 		contentTemplate = 
 						'<div id="content">' +
-						'<div id="nombre">x<?php echo "xaxxaxxa";?>w<img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>' +
+						'<div id="nombre"><img src="'+
+						fallbackImg +
+						'" alt="Recursos" style="top=10px; border:2px dotted green;" /></div>' +
 							'<div id="view">' +
 								'<ul id="items" class="clearfix">' +
 									'<li class="header">' +
@@ -120,12 +123,8 @@ modulejs.define('view/items', ['_', '$', 'core/settings', 'core/resource', 'core
 				$empty.hide();
 			}
 
-			var labels = _.pluck(item.getCrumb(), 'label').pop();
-				//title = labels.join('/');
-				console.log(labels);
-				console.log(item.getCrumb());
-
-			$('#nombre').html(labels.toUpperCase());
+			var label = _.pluck(item.getCrumb(), 'label').pop();
+			$('#nombre').html(label.toUpperCase());
 		},
 
 		onLocationRefreshed = function (item, added, removed) {

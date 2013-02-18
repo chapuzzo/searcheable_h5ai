@@ -95,11 +95,9 @@ module.exports = function (make) {
 			.jshint(jshint);
 	});
 
-	make.target('tl', ['clean', 'build'], 'ln to a test directory with lots of subdir').sync(function (){
+	make.target('tl', ['build-uncompressed'], 'ln to a test directory with lots of subdir').sync(function (){
 
 		var cp = require('child_process');
-			
-
 		cp.exec('ln -sf /home/luis/sandbox/jsonizer/prova '+build+'/prova', function (error, stdout, stderr) {
 		  console.log(stdout);
 		  console.log(stderr);
@@ -108,6 +106,7 @@ module.exports = function (make) {
 		    console.log('exec error: ' + error);
 		  }
 		});
+
 
 	});
 
@@ -128,7 +127,7 @@ module.exports = function (make) {
 
 		$(src +  ': _h5ai/client/css/*.css')
 			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
-			.cssmin()
+			/*.cssmin()*/
 			.write($.OVERWRITE, mapSrc);
 
 		$(src + ': **/*.jade')
