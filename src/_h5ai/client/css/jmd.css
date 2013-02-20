@@ -13,8 +13,17 @@
 /*body{
     font-family: "JoyfulJulianaProRegular", Prusia
 }*/
-.bordered{
+#jmd *{
     border: 1px dotted black;
+}
+
+#jmd *:hover{
+    border: 1px dotted blue;
+    border-radius: 15px;
+}
+
+#jmd div{
+    border-color: red;
 }
 
 #jmd {

@@ -96,7 +96,7 @@ module.exports = function (make) {
 	});
 
 	make.target('tl', ['build-uncompressed'], 'ln to a test directory with lots of subdir').sync(function (){
-
+		$.rmfr($.I_AM_SURE, build+'/prova');
 		var cp = require('child_process');
 		cp.exec('ln -sf /home/luis/sandbox/jsonizer/prova '+build+'/prova', function (error, stdout, stderr) {
 		  console.log(stdout);
