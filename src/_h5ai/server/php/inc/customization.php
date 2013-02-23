@@ -1,21 +1,21 @@
-<div id="jmd" class="bordered">
-    <div id="cabecera"  class="bordered"
+<div id="jmd">
+    <div id="cabecera" 
     style="background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_<?php echo rand(1,25);?>.png') 0px 0% no-repeat;">
-        <div id="categoriasestaticas" class="bordered" style="border-color: red">
-            <div id="ca_nuestraidentidad" class="bordered">
+        <div id="categoriasestaticas" style="border-color: red">
+            <div id="ca_nuestraidentidad">
                 <a href="http://www.juniorsmd.org/ca/nuestraidentidad"></a>
             </div>
-            <div id="ca_quehacemos" class="bordered">
+            <div id="ca_quehacemos">
                 <a href="http://www.juniorsmd.org/ca/quehacemos"></a>
             </div>
-            <div id="ca_dondeestamos" class="bordered">
+            <div id="ca_dondeestamos">
                 <a href="http://www.juniorsmd.org/ca/dondeestamos"></a>
             </div>
-            <div id="ca_nuestrahistoria" class="bordered">
+            <div id="ca_nuestrahistoria">
                 <a href="http://www.juniorsmd.org/ca/nuestrahistoria"></a>
             </div>
         </div>
-        <a href="http://www.juniorsmd.org" id="jlogo" class="bordered"></a>
+        <a href="http://www.juniorsmd.org" id="jlogo"></a>
     </div>
 </div>
 <!--<div id="nombre"><img src="http://www.juniorsmd.org/images/titulossecciones/es_TituloRecursos.png" alt="Ruta a la carpeta donde estamos"/></div>

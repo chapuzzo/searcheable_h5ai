@@ -120,13 +120,13 @@ module.exports = function (make) {
 			.write($.OVERWRITE, mapSrc);
 
 		$(src + ': _h5ai/client/css/*.less')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
+			.modified(mapSrc, $(src + ': _h5ai/client/css/**, ! _h5ai/client/css/*.css'))
 			.less()
 			.cssmin()
 			.write($.OVERWRITE, mapSrc);
 
 		$(src +  ': _h5ai/client/css/*.css')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
+			.modified(mapSrc, $(src + ': _h5ai/client/css/*.css'))
 			/*.cssmin()*/
 			.write($.OVERWRITE, mapSrc);
 
@@ -156,9 +156,14 @@ module.exports = function (make) {
 			.write($.OVERWRITE, mapSrc);
 
 		$(src + ': _h5ai/client/css/*.less')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
+			.modified(mapSrc, $(src + ': _h5ai/client/css/**, ! _h5ai/client/css/*.css'))
 			.less()
 			// .cssmin()
+			.write($.OVERWRITE, mapSrc);
+
+		$(src +  ': _h5ai/client/css/*.css')
+			.modified(mapSrc, $(src + ': _h5ai/client/css/*.css'))
+			/*.cssmin()*/
 			.write($.OVERWRITE, mapSrc);
 
 		$(src + ': **/*.jade')
