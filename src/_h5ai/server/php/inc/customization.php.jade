@@ -1,14 +1,17 @@
-- var rand = "<?php echo rand(1,24); ?>"
+- var bgImage = "<?php echo rand(1,24); ?>"
+- var url = "http://www.juniorsmd.org/"
+- var lang = 'es'
 
 div#jmd
-    div#cabecera( style="background: url(http://www.juniorsmd.org/images/cabeceras/imagencabecera_#{rand}.png) 0px 0% no-repeat;")
-    div#categoriasestaticas
-        div#ca_nuestraidentidad
-            a( href="http://www.juniorsmd.org/ca/nuestraidentidad")
-        div#ca_quehacemos
-            a( href="http://www.juniorsmd.org/ca/quehacemos")
-        div#ca_dondeestamos
-            a( href="http://www.juniorsmd.org/ca/dondeestamos")
-        div#ca_nuestrahistoria
-            a( href="http://www.juniorsmd.org/ca/nuestrahistoria")
-    a#jlogo( href="http://www.juniorsmd.org" style="z-index: -1")
+    div#cabecera( style!="background: url('http://www.juniorsmd.org/images/cabeceras/imagencabecera_#{bgImage}.png') 0px 0% no-repeat;" )
+        div#categoriasestaticas
+            div( id!='#{lang}_nuestraidentidad' )
+                a( href!="#{url}#{lang}/nuestraidentidad")
+                | tittle = 
+            div( id!='#{lang}_quehacemos' )
+                a( href!="#{url}#{lang}/quehacemos" )
+            div( id!='#{lang}_dondeestamos' )
+                a( href!="#{url}#{lang}/dondeestamos" )
+            div( id!='#{lang}_nuestrahistoria' )
+                a( href!="#{url}#{lang}/nuestrahistoria" )
+        a#jlogo( href!="#{url}#{lang}" )
