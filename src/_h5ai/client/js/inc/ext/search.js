@@ -1,5 +1,5 @@
 
-modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource'], function (_, $, allsettings, resource) {
+modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource', 'core/server', 'core/event'], function (_, $, allsettings, resource, server, event) {
 
 	var settings = _.extend({
 			enabled: false
@@ -15,7 +15,7 @@ modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource'], func
 
 		$search, $input, $noMatch,
 
-		filter = function (re) {
+		/*filter = function (re) {
 
 			var match = [],
 				noMatch = [],
@@ -65,17 +65,36 @@ modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource'], func
 			}).join('|');
 
 			return new RegExp(sequence, 'i');
-		},
+		},*/
 
 		update = function () {
 
 			var val = $input.val();
 
 			if (val) {
-				//filter(parseFilterSequence(val));
+				$.ajax({
+					url: 'http://jsonizer/v2.php',
+					data: { string : val },
+					crossDomain: true,
+					type: 'POST',
+					dataType: 'json',
+					success: function (json) {
+						console.log(json);
+						console.log(json[0].urls);
+						var Item = modulejs.require('model/item'),
+						//               (absHref,                 time, size, status, isContentFetched) 
+						item = Item.get(json[0].urls[0].substr(1), 1512315, 15646, true );
+						console.log(json[0].urls[0].substr(1));
+						//$('#items').push(item);
+						event.pub('location.refreshed', [], [item], []);
+					},
+					error: function () {
+						//callback();
+					}
+				});
+
 				$search.addClass('current');
-			} else {
-				//filter();
+			} else {				
 				$search.removeClass('current');
 			}
 		},

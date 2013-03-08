@@ -222,6 +222,11 @@ class Api {
 
 			json_exit();
 		}
+
+		else if ($action === "search"){
+			json_exit();
+		}
+
 	}
 }
 
