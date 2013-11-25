@@ -15,84 +15,12 @@ modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource', 'core
 
 		$search, $input, $noMatch,
 
-		/*filter = function (re) {
-
-			var match = [],
-				noMatch = [],
-				duration = 200;
-
-			if (re) {
-				$('#items .item').each(function () {
-
-					var label = $(this).find('.label').text();
-
-					if (label.match(re)) {
-						match.push(this);
-					} else {
-						noMatch.push(this);
-					}
-				});
-			} else {
-				match = $('#items .item');
-			}
-
-			if ($(match).length) {
-				$noMatch.hide();
-			} else {
-				setTimeout(function () { $noMatch.show(); }, duration);
-			}
-			$(match).fadeIn(duration);
-			$(noMatch).fadeOut(duration);
-		},
-
-		escapeRegExp = function (sequence) {
-
-			return sequence.replace(/[\-\[\]{}()*+?.,\\$\^|#\s]/g, '\\$&');
-		},
-
-		parseFilterSequence = function (sequence) {
-
-			if (sequence.substr(0, 3) === 're:') {
-				return new RegExp(sequence.substr(3));
-			}
-
-			sequence = $.map($.trim(sequence).split(/\s+/), function (part) {
-
-				return _.map(part.split(''), function (char) {
-
-					return escapeRegExp(char);
-				}).join('.*?');
-			}).join('|');
-
-			return new RegExp(sequence, 'i');
-		},*/
-
 		update = function () {
 
 			var val = $input.val();
 
 			if (val) {
-				$.ajax({
-					url: 'http://jsonizer/v2.php',
-					data: { string : val },
-					crossDomain: true,
-					type: 'POST',
-					dataType: 'json',
-					success: function (json) {
-						console.log(json);
-						console.log(json[0].urls);
-						var Item = modulejs.require('model/item'),
-						//               (absHref,                 time, size, status, isContentFetched) 
-						item = Item.get(json[0].urls[0].substr(1), 1512315, 15646, true );
-						console.log(json[0].urls[0].substr(1));
-						//$('#items').push(item);
-						event.pub('location.refreshed', [], [item], []);
-					},
-					error: function () {
-						//callback();
-					}
-				});
-
+				search(val);
 				$search.addClass('current');
 			} else {				
 				$search.removeClass('current');
@@ -122,16 +50,26 @@ modulejs.define('ext/search', ['_', '$', 'core/settings', 'core/resource', 'core
 				})
 				.on('blur keyup', update);
 
-			$input
+			$(document)
 				.on('keydown', function (event) {
 
 					if (event.which === 27) {
 						$input.attr('value','').blur();
 					}
-				})
-				.on('keypress', function (event) {
-
-					$input.focus();
+					else 
+					if((57>=event.which && event.which>=48)        // first row numbers
+			        || (105>=event.which && event.which>=96)        // keypad numbers
+			        || (90>=event.which && event.which>=65))         // a-z
+			        //|| (40>=event.which && event.which>=37)       // arrows
+			        //|| (event.which == 8) || (event.which == 46)  // backspace && del
+			        //|| (event.which == 13) || (event.which == 32))// enter && space
+				    {				      
+						$input.focus();
+				    }
+				    else
+				    {
+				    	//event.which = 0;
+				    }
 				});
 		};
 
