@@ -1,8 +1,8 @@
 doctype 5
 //if lt IE 9
-	<html class="no-js oldie" lang="en">
+	<html class="no-js no-browser" lang="en">
 //[if gt IE 8]><!
-html.no-js( lang="en" )
+html.no-js.browser( lang="en" )
 	//<![endif]
 
 	head
@@ -12,64 +12,86 @@ html.no-js( lang="en" )
 		meta( name="description", content="{{pkg.name}} server details" )
 		meta( name="viewport", content="width=device-width" )
 		link( rel="shortcut icon", href="client/images/app-16x16.ico" )
-		link( rel="apple-touch-icon", type="image/png", href="client/images/app-48x48.png" )
-		link( rel="stylesheet", href="//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic|Ubuntu:400,700,400italic,700italic" )
+		link( rel="apple-touch-icon-precomposed", type="image/png", href="client/images/app-48x48.png" )
+		link( rel="apple-touch-icon-precomposed", sizes="57x57", type="image/png", href="client/images/app-57x57.png" )
+		link( rel="apple-touch-icon-precomposed", sizes="72x72", type="image/png", href="client/images/app-72x72.png" )
+		link( rel="apple-touch-icon-precomposed", sizes="114x114", type="image/png", href="client/images/app-114x114.png" )
+		link( rel="apple-touch-icon-precomposed", sizes="144x144", type="image/png", href="client/images/app-144x144.png" )
+		link( rel="stylesheet", href="//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic|Ubuntu:300italic,700italic,300,700" )
 		link( rel="stylesheet", href="client/css/styles.css" )
 		script( src="client/js/scripts.js", data-mode="info" )
 
 	body#h5ai-info
 
-		h1 {{pkg.name}}
+		h1
+			a( href="http://larsjung.de/h5ai/" ) {{pkg.name}}
 		span.build-version version {{pkg.version}}
 		span.build-stamp {{stamp}}
+		span.idx-file Index File: 
+			code.value
 
-		h2 server supports
+		h2 Server Details
 		ul#tests
-			li.test( data-id="php" )
-				span.test-label php version
+			li.test.php( data-id="php" )
+				span.test-label PHP version
 				span.test-result ?
-				div.test-info PHP version >= 5.2.1
+				div.test-info PHP version &gt;= 5.2.1
 			li.test( data-id="cache" )
-				span.test-label cache directory
+				span.test-label Cache directory
 				span.test-result ?
-				div.test-info web server has write access
+				div.test-info Web server has write access
 			li.test( data-id="thumbs" )
-				span.test-label image thumbs
+				span.test-label Image thumbs
 				span.test-result ?
 				div.test-info PHP GD extension with JPEG support available
+			li.test( data-id="exif" )
+				span.test-label Use EXIF thumbs
+				span.test-result ?
+				div.test-info PHP EXIF extension available
 			li.test( data-id="ffmpeg" )
-				span.test-label movie thumbs
+				span.test-label Movie thumbs
 				span.test-result ?
-				div.test-info command 'ffmpeg' available
+				div.test-info
+					| Command line program 
+					code ffmpeg
+					|  available
 			li.test( data-id="convert" )
-				span.test-label pdf thumbs
+				span.test-label PDF thumbs
 				span.test-result ?
-				div.test-info command 'convert' available
-			li.test( data-id="archive" )
-				span.test-label php tar and zip
-				span.test-result ?
-				div.test-info PHP Phar extension available
+				div.test-info
+					| Command line program 
+					code convert
+					|  available
 			li.test( data-id="tar" )
-				span.test-label shell tar
+				span.test-label Shell tar
 				span.test-result ?
-				div.test-info command 'tar' available
+				div.test-info
+					| Command line program 
+					code tar
+					|  available
 			li.test( data-id="zip" )
-				span.test-label shell zip
+				span.test-label Shell zip
 				span.test-result ?
-				div.test-info command 'zip' available
+				div.test-info
+					| Command line program 
+					code zip
+					|  available
 			li.test( data-id="du" )
-				span.test-label folder size
+				span.test-label Folder sizes
 				span.test-result ?
-				div.test-info command 'du' available
+				div.test-info
+					| Command line program 
+					code du
+					|  available
 
 		div#bottombar.clearfix
 			span.left
 				a#h5ai-reference( href="{{pkg.url}}", title="{{pkg.name}} · {{pkg.description}}" )
 					| {{pkg.name}} {{pkg.version}}
-				span.hideOnJs.noJsMsg
-					| ⚡ JavaScript is disabled! ⚡
-				span.oldBrowser
-					| ⚡ Some features disabled! Works best in 
+				span.noJsMsg
+					| ⚡ JavaScript disabled! ⚡
+				span.noBrowserMsg
+					| ⚡ Unsupported browser! Works best in 
 					a( href="http://browsehappy.com" ) modern browsers
 					| . ⚡
 			span.right

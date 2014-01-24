@@ -1,14 +1,11 @@
 
-modulejs.define('ext/download', ['_', '$', 'core/settings', 'core/resource', 'core/event', 'core/server', 'core/location'], function (_, $, allsettings, resource, event, server, location) {
+modulejs.define('ext/download', ['_', '$', 'core/settings', 'core/resource', 'core/event', 'core/location', 'core/server'], function (_, $, allsettings, resource, event, location, server) {
 
 	var settings = _.extend({
 			enabled: false,
-			execution: 'php',
-			format: 'zip',
+			type: 'php-tar',
 			packageName: 'package'
 		}, allsettings.download),
-
-		// formats = ['tar', 'zip'],
 
 		downloadBtnTemplate = '<li id="download">' +
 									'<a href="#">' +
@@ -17,73 +14,43 @@ modulejs.define('ext/download', ['_', '$', 'core/settings', 'core/resource', 'co
 									'</a>' +
 								'</li>',
 
-		selectedHrefsStr = '',
-		$download, $img,
-
-		failed = function () {
-
-			$download.addClass('failed');
-			setTimeout(function () {
-				$download.removeClass('failed');
-			}, 1000);
-		},
-
-		handleResponse = function (json) {
-
-			$download.removeClass('current');
-			$img.attr('src', resource.image('download'));
-
-			if (json && json.code === 0) {
-				setTimeout(function () { // wait here so the img above can be updated in time
-
-					window.location = '?action=getArchive&id=' + json.id + '&as=' + (settings.packageName || location.getItem().label) + '.' + settings.format;
-				}, 200);
-			} else {
-				failed();
-			}
-		},
-
-		requestArchive = function (hrefsStr) {
-
-			$download.addClass('current');
-			$img.attr('src', resource.image('loading.gif', true));
-
-			server.request({
-				action: 'createArchive',
-				execution: settings.execution,
-				format: settings.format,
-				hrefs: hrefsStr
-			}, handleResponse);
-		},
+		selectedItems = [],
 
 		onSelection = function (items) {
 
-			selectedHrefsStr = '';
-			if (items.length) {
-				selectedHrefsStr = _.map(items, function (item) {
+			var $download = $('#download');
 
-					return item.absHref;
-				}).join(':');
+			selectedItems = items.slice(0);
+			if (selectedItems.length) {
 				$download.appendTo('#navbar').show();
 			} else {
 				$download.hide();
 			}
 		},
 
+		onClick = function (event) {
+
+			var type = settings.type,
+				extension = (type === 'shell-zip') ? 'zip' : 'tar',
+				query = {
+					action: 'download',
+					as: (settings.packageName || location.getItem().label) + '.' + extension,
+					type: type,
+					hrefs: _.pluck(selectedItems, 'absHref').join('|:|')
+				};
+
+			server.formRequest(query);
+		},
+
 		init = function () {
 
-			if (!settings.enabled || !server.api) {
+			if (!settings.enabled) {
 				return;
 			}
 
-			$download = $(downloadBtnTemplate)
-				.find('a').on('click', function (event) {
-
-					event.preventDefault();
-					requestArchive(selectedHrefsStr);
-				}).end()
+			$(downloadBtnTemplate)
+				.find('a').on('click', onClick).end()
 				.appendTo('#navbar');
-			$img = $download.find('img');
 
 			event.sub('selection', onSelection);
 		};

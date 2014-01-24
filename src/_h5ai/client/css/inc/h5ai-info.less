@@ -3,9 +3,19 @@ body#h5ai-info {
 	font-family: @font-family;
 	margin: 2em auto 4em auto;
 	font-size: 20px;
-	color: #555;
+	color: @col;
 	max-width: 600px;
 	text-align: center;
+
+	a, a:active, a:visited {
+		color: @col;
+		text-decoration: none;
+		.transition(all 0.2s ease-in-out);
+
+		&:hover {
+			color: @col-hover;
+		}
+	}
 
 	.build-version {
 		display: block;
@@ -15,6 +25,22 @@ body#h5ai-info {
 		margin-top: 0.3em;
 		font-size: 0.6em;
 		color: #aaa;
+	}
+	.idx-file {
+		margin-top: 1em;
+		font-size: 0.6em;
+		display: block;
+		color: #aaa;
+
+	}
+	code {
+		margin: 0 0.2em;
+		padding: 2px 4px;
+		border-radius: 4px;
+		font-family: @font-family-mono;
+		letter-spacing: 0.1em;
+		background-color: @col-widget-back;
+		border: @border-widget;
 	}
 	h1 {
 		font-size: 3.6em;
@@ -44,7 +70,7 @@ body#h5ai-info {
 
 		.test-label {
 			display: inline-block;
-			width: 300px;
+			width: 350px;
 		}
 		.test-result {
 			display: inline-block;
@@ -64,7 +90,7 @@ body#h5ai-info {
 			margin: 4px 0 12px 12px;
 			font-size: 0.7em;
 			color: #aaa;
-			width: 310px;
+			width: 350px;
 			line-height: 1.2em;
 		}
 	}

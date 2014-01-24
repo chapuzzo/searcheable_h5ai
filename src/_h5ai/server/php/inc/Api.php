@@ -100,42 +100,28 @@ class Api {
 		}
 
 
-		else if ($action === "createArchive") {
+		else if ($action === "download") {
 
 			json_fail(1, "downloads disabled", !$options["download"]["enabled"]);
 
-			list($execution, $format, $hrefs) = use_request_params(array("execution", "format", "hrefs"));
+			list($as, $type, $hrefs) = use_request_params(array("as", "type", "hrefs"));
 
 			normalized_require_once("/server/php/inc/Archive.php");
 			$archive = new Archive($this->app);
 
-			$hrefs = explode(":", trim($hrefs));
-			$target = $archive->create($execution, $format, $hrefs);
+			$hrefs = explode("|:|", trim($hrefs));
 
-			if (!is_string($target)) {
-				json_fail($target, "package creation failed");
-			}
-
-			json_exit(array("id" => basename($target), "size" => filesize($target)));
-		}
-
-
-		else if ($action === "getArchive") {
-
-			json_fail(1, "downloads disabled", !$options["download"]["enabled"]);
-
-			list($id, $as) = use_request_params(array("id", "as"));
-			json_fail(2, "file not found", !preg_match("/^package-/", $id));
-
-			$target = $this->app->get_cache_abs_path() . "/" . $id;
-			json_fail(3, "file not found", !file_exists($target));
-
+			set_time_limit(0);
 			header("Content-Type: application/octet-stream");
 			header("Content-Length: " . filesize($target));
 			header("Content-Disposition: attachment; filename=\"$as\"");
 			header("Connection: close");
-			register_shutdown_function("delete_tempfile", $target);
-			readfile($target);
+			$rc = $archive->output($type, $hrefs);
+
+			if ($rc !== 0) {
+				json_fail("packaging failed");
+			}
+			exit;
 		}
 
 
@@ -223,10 +209,7 @@ class Api {
 			json_exit();
 		}
 
-		else if ($action === "search"){
-			json_exit();
-		}
-
+		json_fail(100, "unsupported request");
 	}
 }
 
