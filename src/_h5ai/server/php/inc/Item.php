@@ -2,7 +2,7 @@
 
 class Item {
 
-	private static $FOLDER_SIZE_CMD = "du -sb \"[DIR]\"";
+	private static $FOLDER_SIZE_CMD = "du -sk [DIR]";
 
 	public static function cmp($item1, $item2) {
 
@@ -57,8 +57,8 @@ class Item {
 			$this->size = null;
 			$options = $app->get_options();
 			if ($options["foldersize"]["enabled"]) {
-				$cmd = str_replace("[DIR]", $this->abs_path, Item::$FOLDER_SIZE_CMD);
-				$this->size = intval(preg_replace("/\s.*$/", "", `$cmd`), 10);
+				$cmd = str_replace("[DIR]", escapeshellarg($this->abs_path), Item::$FOLDER_SIZE_CMD);
+				$this->size = intval(preg_replace("/\s.*$/", "", `$cmd`), 10) * 1024;
 			}
 		} else {
 			$this->size = @filesize($this->abs_path);
@@ -88,7 +88,7 @@ class Item {
 	public function get_parent(&$cache) {
 
 		$parent_abs_path = normalize_path(dirname($this->abs_path));
-		if (starts_with($parent_abs_path, $this->app->get_root_abs_path())) {
+		if ($parent_abs_path !== $this->abs_path && starts_with($parent_abs_path, $this->app->get_root_abs_path())) {
 			return Item::get($this->app, $parent_abs_path, $cache);
 		}
 		return null;

@@ -2,26 +2,15 @@
 'use strict';
 
 
-var path = require('path'),
+module.exports = function (make) {
 
-	pkg = require('./package.json'),
+	var path = require('path'),
 
-	root = path.resolve(__dirname),
-	src = path.join(root, 'src'),
-	build = path.join(root, 'build'),
+		pkg = require('./package.json'),
 
-	jshint = {
-		// Enforcing Options
-		bitwise: true,
-		curly: true,
-		eqeqeq: true,
-		forin: true,
-		latedef: true,
-		newcap: true,
-		noempty: true,
-		plusplus: true,
-		trailing: true,
-		undef: true,
+		root = path.resolve(__dirname),
+		src = path.join(root, 'src'),
+		build = path.join(root, 'build'),
 
 		// Environments
 		browser: true,
@@ -51,16 +40,24 @@ module.exports = function (make) {
 
 	var Event = make.Event,
 		$ = make.fQuery,
-		moment = make.moment;
+		mapSrc = $.map.p(src, build).s('.less', '.css').s('.jade', ''),
+		mapRoot = $.map.p(root, build);
 
-	
-	make.version('>=0.8.1');
+
+	make.version('>=0.10.0');
 	make.defaults('build');
 
 
 	make.before(function () {
 
-		handlebarsEnv.stamp = moment().format('YYYY-MM-DD HH:mm:ss');
+		var moment = make.moment();
+
+		make.env = {
+			pkg: pkg,
+			stamp: moment.format('YYYY-MM-DD HH:mm:ss')
+		};
+
+		$.info({ method: 'before', message: pkg.version + ' ' + make.env.stamp });
 	});
 
 
@@ -73,11 +70,8 @@ module.exports = function (make) {
 
 		$.git(root, function (err, result) {
 
-			pkg.version += '-' + result.revListOriginMasterHead.length + '-' + result.revParseHead.slice(0, 7);
-			Event.info({
-				method: 'check-version',
-				message: 'version set to ' + pkg.version
-			});
+			pkg.version += result.buildSuffix;
+			$.info({ method: 'check-version', message: 'version set to ' + pkg.version });
 			done();
 		});
 	});
@@ -85,65 +79,67 @@ module.exports = function (make) {
 
 	make.target('clean', [], 'delete build folder').sync(function () {
 
-		$.rmfr($.I_AM_SURE, build);
+		$.DELETE(build);
 	});
 
 
 	make.target('lint', [], 'lint all JavaScript files with JSHint').sync(function () {
 
+		var jshint = {
+				// Enforcing Options
+				bitwise: true,
+				curly: true,
+				eqeqeq: true,
+				forin: true,
+				latedef: true,
+				newcap: true,
+				noempty: true,
+				plusplus: true,
+				trailing: true,
+				undef: true,
+
+				// Environments
+				browser: true
+			},
+			globals = {
+				'modulejs': true
+			};
+
 		$(src + '/_h5ai/client/js: **/*.js, ! lib/**')
-			.jshint(jshint);
-	});
-
-	make.target('tl', ['build-uncompressed'], 'ln to a test directory with lots of subdir').sync(function (){
-		$.rmfr($.I_AM_SURE, build+'/prova');
-		var cp = require('child_process');
-		cp.exec('ln -sf /home/luis/sandbox/jsonizer/prova '+build+'/prova', function (error, stdout, stderr) {
-		  console.log(stdout);
-		  console.log(stderr);
-
-		  if (error !== null) {
-		    console.log('exec error: ' + error);
-		  }
-		});
-
-
+			.jshint(jshint, globals);
 	});
 
 
 	make.target('build', ['check-version'], 'build all updated files').sync(function () {
 
+		var header = '/* ' + pkg.name + ' ' + pkg.version + ' - ' + pkg.url + ' */';
+
 		$(src + ': _h5ai/client/js/*.js')
 			.modified(mapSrc, $(src + ': _h5ai/client/js/**'))
 			.includify()
-			.uglifyjs()
-			.write($.OVERWRITE, mapSrc);
+			.uglifyjs({header: header})
+			.WRITE(mapSrc);
 
 		$(src + ': _h5ai/client/css/*.less')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/**, ! _h5ai/client/css/*.css'))
+			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
 			.less()
-			.cssmin()
-			.write($.OVERWRITE, mapSrc);
-
-		$(src +  ': _h5ai/client/css/*.css')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/*.css'))
-			/*.cssmin()*/
-			.write($.OVERWRITE, mapSrc);
+			.cssmin({header: header})
+			.WRITE(mapSrc);
 
 		$(src + ': **/*.jade')
 			.modified(mapSrc)
-			.handlebars(handlebarsEnv)
-			.jade({pretty:true})
-			.write($.OVERWRITE, mapSrc);
+			.handlebars(make.env)
+			.jade()
+			.WRITE(mapSrc);
 
 		$(src + ': **, ! _h5ai/client/js/**, ! _h5ai/client/css/**, ! **/*.jade')
 			.modified(mapSrc)
-			.handlebars(handlebarsEnv)
-			.write($.OVERWRITE, mapSrc);
+			.handlebars(make.env)
+			.WRITE(mapSrc);
 
 		$(root + ': README*, LICENSE*')
 			.modified(mapRoot)
-			.write($.OVERWRITE, mapRoot);
+			.WRITE(mapRoot);
 	});
 
 
@@ -153,33 +149,28 @@ module.exports = function (make) {
 			.modified(mapSrc, $(src + ': _h5ai/client/js/**'))
 			.includify()
 			// .uglifyjs()
-			.write($.OVERWRITE, mapSrc);
+			.WRITE(mapSrc);
 
 		$(src + ': _h5ai/client/css/*.less')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/**, ! _h5ai/client/css/*.css'))
+			.modified(mapSrc, $(src + ': _h5ai/client/css/**'))
 			.less()
 			// .cssmin()
-			.write($.OVERWRITE, mapSrc);
-
-		$(src +  ': _h5ai/client/css/*.css')
-			.modified(mapSrc, $(src + ': _h5ai/client/css/*.css'))
-			/*.cssmin()*/
-			.write($.OVERWRITE, mapSrc);
+			.WRITE(mapSrc);
 
 		$(src + ': **/*.jade')
 			.modified(mapSrc)
-			.handlebars(handlebarsEnv)
-			.jade({pretty:true})
-			.write($.OVERWRITE, mapSrc);
+			.handlebars(make.env)
+			.jade()
+			.WRITE(mapSrc);
 
 		$(src + ': **, ! _h5ai/client/js/**, ! _h5ai/client/css/**, ! **/*.jade')
 			.modified(mapSrc)
-			.handlebars(handlebarsEnv)
-			.write($.OVERWRITE, mapSrc);
+			.handlebars(make.env)
+			.WRITE(mapSrc);
 
 		$(root + ': README*, LICENSE*')
 			.modified(mapRoot)
-			.write($.OVERWRITE, mapRoot);
+			.WRITE(mapRoot);
 	});
 
 

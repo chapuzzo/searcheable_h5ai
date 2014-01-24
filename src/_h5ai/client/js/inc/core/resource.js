@@ -1,14 +1,14 @@
 
 modulejs.define('core/resource', ['core/settings'], function (settings) {
 
-	var image = function (id, noPngExt) {
+	var image = function (id) {
 
-			return settings.h5aiAbsHref + 'client/images/' + id + (noPngExt ? '' : '.png');
+			return settings.h5aiAbsHref + 'client/images/' + id + '.svg';
 		},
 
-		icon = function (id, big) {
+		icon = function (id) {
 
-			return settings.h5aiAbsHref + 'client/icons/' + (big ? '48x48' : '16x16') + '/' + id + '.png';
+			return settings.h5aiAbsHref + 'client/icons/96/' + id + '.png';
 		};
 
 	return {
